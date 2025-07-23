@@ -48,7 +48,7 @@ Este arquivo é utilizado para configurar o ambiente em que os testes serão exe
 
 Para entrar no ambiente virtual gerenciado pelo poetry:
 
-    poetry shell
+    poetry shell 
 
 Depois execute os testes com:
 
