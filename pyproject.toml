@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "rewards-daemon-test"
+name = "Api Automation"
 version = "0.1.0"
-description = "Projeto de testes integrados do projeto de Rewards Daemon"
+description = "Projeto de testes automatizados"
 authors = []
 readme = "README.md"
 package-mode = false
