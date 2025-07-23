@@ -42,19 +42,9 @@ Resource          resources/utils/http.robot
 *** Variables ***
 
 ${BASE_URL}             %{BASE_URL=${EMPTY}}
-
-### DATABASE CONNECTION PARAMS
-${DB_PLATFORM_HOST}          %{DB_PLATFORM_HOST=${EMPTY}}
-${DB_PLATFORM_PORT}          %{DB_PLATFORM_PORT=${EMPTY}}
-${DB_PLATFORM_USER}          %{DB_PLATFORM_USER=${EMPTY}}
-${DB_PLATFORM_PASSWORD}      %{DB_PLATFORM_PASSWORD=${EMPTY}}
-${DB_PLATFORM_DBNAME}        %{DB_PLATFORM_DBNAME=${EMPTY}}
-${DB_PLATFORM_ALIAS}         platform_asa
-${DB_DRIVER}                 ODBC Driver 18 for SQL Server
 ${API_ENVIRONMENT}           %{API_ENVIRONMENT=${EMPTY}}
 ${YAML_FILE}                 env/${API_ENVIRONMENT}.yaml
 ${TESTPLAN}                  %{TESTPLAN=${EMPTY}}
-${SUITE_EMPRESTIMO}          %{SUITE_EMPRESTIMO=${EMPTY}}
 
 
 
