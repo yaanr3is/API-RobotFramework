@@ -1,0 +1,4 @@
+PROD:
+  BASE_URL: https://serverest.dev
+  LOGIN:
+    BASE_URL: https://api.com

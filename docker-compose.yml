@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  integration-test:
+    build: .
+    network_mode: host
+    volumes:
+      - .:/app
+      - ./output:/app/output
+    working_dir: /app
+    environment:
+      - ENVIRONMENT=Dev
+      - BASE_URL=https://dev-cards-webhook-api.asa.com.br
+      - DATABASE_HOST=10.240.3.236
+      - DATABASE_PORT=1433
+      - DATABASE_NAME=rewards-dev
+      - DATABASE_USER=usr_rewards_daemon_dev
+      - DATABASE_PASSWORD=
+      - TEAMS_WEBHOOK_URL=
+      - RELEASE_NAME=

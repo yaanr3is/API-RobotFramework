@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "rewards-daemon-test"
+version = "0.1.0"
+description = "Projeto de testes integrados do projeto de Rewards Daemon"
+authors = []
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.14"
+robotframework = "^7.0.1"
+requests = "^2.32.3"
+robotframework-jsonlibrary = "^0.5"
+robotframework-requests = "^0.9.7"
+robotframework-databaselibrary = "1.4.4"
+pymssql = "2.3.2"
+python-dotenv = "^1.0.1"
+PyPDF2 = "^3.0.1"
+robotframework-doctestlibrary = "0.23.0"
+robotframework-seleniumlibrary = "6.7.0"
+pdfplumber = "0.11.6"
+PyMuPDF = "1.25.5"
+pyyaml = "^6.0.2"
+
+[tool.poetry.group.dev.dependencies]
+robotframework-pabot = "^2.18.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

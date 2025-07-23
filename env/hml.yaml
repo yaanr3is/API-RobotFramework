@@ -1,0 +1,4 @@
+HML:
+  BASE_URL: https://serverest.dev
+  LOGIN:
+    ENDPOINT_ACCESS: /webapi/api/Acesso/Login

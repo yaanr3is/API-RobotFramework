@@ -1,0 +1,10 @@
+DEV:
+  BASE_URL: https://serverest.dev
+  LOGIN:
+    ENDPOINT:
+      ENDPOINT_LOGIN: /login
+  USER:
+    ENDPOINT:
+      ENDPOINT_USERS: /usuarios
+    PARAMETER:
+      PARAMETER_FILTER: ?_id={PARAM_ID}&nome={PARAM_NOME}&email={PARAM_EMAIL}&password={PARAM_PASSWORD}&administrador={PARAM_ADMIN}
