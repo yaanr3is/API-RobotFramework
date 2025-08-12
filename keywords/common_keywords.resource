@@ -156,25 +156,25 @@ Update Test Execution in Testplan and Attach Evidence
     [Arguments]    ${TESTPLAN_ID}    ${SUITE_ID}
     Run Keyword If    '${TEST STATUS}' == 'PASS'    Change Test Case ID to Approved    ${TESTPLAN_ID}    ${SUITE_ID}    ${POINT_ID}
     Run Keyword If    '${TEST STATUS}' == 'FAIL'    Change Test Case ID to Failed      ${TESTPLAN_ID}    ${SUITE_ID}    ${POINT_ID}
-    # ${VALUES}=    Get Last Run    ${TESTPLAN_ID}    ${SUITE_ID}    ${POINT_ID}
-    # ${TEST_RUN_ID}=    Get From List    ${VALUES}    0
-    # ${RESULT_ID}=    Get From List    ${VALUES}    1
+    ${VALUES}=    Get Last Run    ${TESTPLAN_ID}    ${SUITE_ID}    ${POINT_ID}
+    ${TEST_RUN_ID}=    Get From List    ${VALUES}    0
+    ${RESULT_ID}=    Get From List    ${VALUES}    1
 
-    # IF    "${API_ENVIRONMENT}" == "HML"
-    #     ${RESULTS_DIR}=    Set Variable    ${EXECDIR}${/}report_hml${/}${TEST NAME}
-    #     Create Directory    ${RESULTS_DIR}
-    #     ${FILENAME}=    Set Variable    ${RESULTS_DIR}${/}evidencia.json
-    #     Create File    ${FILENAME}    {"status": "${TEST STATUS}", "request": "${REQUEST}", "response": "${RESPONSE}"}
-    #     Attach File on Last Run    ${TEST_RUN_ID}    ${RESULT_ID}    ${FILENAME}
-    # END
+    IF    "${API_ENVIRONMENT}" == "HML"
+        ${RESULTS_DIR}=    Set Variable    ${EXECDIR}${/}report_hml${/}${TEST NAME}
+        Create Directory    ${RESULTS_DIR}
+        ${FILENAME}=    Set Variable    ${RESULTS_DIR}${/}evidencia.json
+        Create File    ${FILENAME}    {"status": "${TEST STATUS}", "request": "${REQUEST}", "response": "${RESPONSE.json()}"}
+        Attach File on Last Run    ${TEST_RUN_ID}    ${RESULT_ID}    ${FILENAME}
+    END
         
 
-Attach Image on Last Run
-    [Arguments]    ${LATEST_TEST_RUN_ID}    ${LATEST_RESULT_ID}    ${BASE64_IMAGE}    ${FILE_NAME}
+Attach File on Last Run
+    [Arguments]    ${LATEST_TEST_RUN_ID}    ${LATEST_RESULT_ID}    ${FILE_PATH}
     Sleep    1s
     ${ENDPOINT}    Set Variable    test/Runs/${LATEST_TEST_RUN_ID}/Results/${LATEST_RESULT_ID}/Attachments?api-version=7.1
     ${HEADER}    Header TestPlan Generic
-    ${PAYLOAD}    attach_image_last_run    ${BASE64_IMAGE}    ${FILE_NAME}  # Passa o nome do arquivo
+    ${PAYLOAD}=    attach_file_last_run    ${FILE_PATH}
     ${RESP}    Make_Post_Request_TestPlan    ${HEADER}    ${ENDPOINT}    ${PAYLOAD}
     Status Should Be    200    ${RESP}
 

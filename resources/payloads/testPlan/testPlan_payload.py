@@ -1,3 +1,7 @@
+import base64
+import mimetypes
+import os
+
 def set_status_inProgress_payload(testPlanId, pointIdTest):
     return {
         "name": "Execução automatizada via API",
@@ -25,11 +29,18 @@ def set_status_failed_payload(pointIdTest):
         }
     }]
 
-def attach_image_last_run(image_base64, file_name):
+def attach_file_last_run(file_path):
+    with open(file_path, "rb") as f:
+        base64_content = base64.b64encode(f.read()).decode("utf-8")
+    file_name = os.path.basename(file_path)
+    content_type, _ = mimetypes.guess_type(file_path)
+    if content_type is None:
+        content_type = "application/octet-stream"  # fallback
+    
     return {
         "attachmentType": "GeneralAttachment",
         "comment": "Executor: Automação",
         "fileName": file_name,
-        "contentType": "image/png",
-        "stream": image_base64
+        "contentType": content_type,
+        "stream": base64_content
     }
