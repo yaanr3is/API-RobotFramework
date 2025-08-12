@@ -46,3 +46,29 @@ Make Delete Request
     ${response}=    Make Request    DELETE    ${BASE_URL}    ${ENDPOINT}    ${HEADER}    ${EMPTY}    ${PARAMETER}
     RETURN    ${response}
 
+Make_Get_Request_TestPlan
+    [Arguments]    ${HEADER}=${HEADER}    ${ENDPOINT}=${ENDPOINT}
+    ${HEADER}=    Header TestPlan Generic
+    RequestsLibrary.Create Session    session_testplan    https://dev.azure.com/ASAInvestments/Arquitetura/_apis/
+        ${RESPONSE}     GET On Session    session_testplan    ${ENDPOINT}    expected_status=any
+        ...             headers=${HEADER}
+        ...             expected_status=any
+    RETURN    ${RESPONSE}
+
+Make_Post_Request_TestPlan
+    [Arguments]    ${HEADER}=${HEADER}    ${ENDPOINT}=${ENDPOINT}    ${PAYLOAD}=${EMPTY}
+    ${HEADER}=    Header TestPlan Generic
+    RequestsLibrary.Create Session    session_testplan    https://dev.azure.com/ASAInvestments/Arquitetura/_apis/
+        ${RESPONSE}     POST On Session    session_testplan    ${ENDPOINT}    expected_status=any
+        ...             headers=${HEADER}
+        ...             json=${PAYLOAD}
+        RETURN    ${RESPONSE}
+
+Make_Patch_Request_TestPlan
+    [Arguments]    ${HEADER}=${HEADER}    ${ENDPOINT}=${ENDPOINT}    ${PAYLOAD}=${EMPTY}
+    ${HEADER}=    Header TestPlan Generic
+    RequestsLibrary.Create Session    session_testplan    https://dev.azure.com/ASAInvestments/Arquitetura/_apis/
+        ${RESPONSE}     PATCH On Session    session_testplan    ${ENDPOINT}    expected_status=any
+        ...             headers=${HEADER}
+        ...             json=${PAYLOAD}
+        RETURN    ${RESPONSE}
