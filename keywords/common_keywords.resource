@@ -164,6 +164,11 @@ Update Test Execution in Testplan and Attach Evidence
         ${RESULTS_DIR}=    Set Variable    ${EXECDIR}${/}report_hml${/}${TEST NAME}
         Create Directory    ${RESULTS_DIR}
         ${FILENAME}=    Set Variable    ${RESULTS_DIR}${/}evidencia.json
+        IF    "${REQUEST}" == "${EMPTY}"
+            ${REQUEST_TO_SAVE}=    Set Variable    No Payload
+        ELSE
+            ${REQUEST_TO_SAVE}=    Set Variable    ${REQUEST}
+        END
         Create File    ${FILENAME}    {"status": "${TEST STATUS}", "request": "${REQUEST}", "response": "${RESPONSE.json()}"}
         Attach File on Last Run    ${TEST_RUN_ID}    ${RESULT_ID}    ${FILENAME}
     END

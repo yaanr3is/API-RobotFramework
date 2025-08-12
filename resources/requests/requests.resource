@@ -23,28 +23,36 @@ Make Request
 
 Make Get Request
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${ENDPOINT}=${EMPTY}    ${HEADER}=${EMPTY}    ${PARAMETER}=${EMPTY}
-    ${response}=    Make Request    GET    BASE_URL=${BASE_URL}    ENDPOINT=${ENDPOINT}    HEADER=${HEADER}    PARAMETER=${PARAMETER}
-    RETURN    ${response}
+    ${RESPONSE}=    Make Request    GET    BASE_URL=${BASE_URL}    ENDPOINT=${ENDPOINT}    HEADER=${HEADER}    PARAMETER=${PARAMETER}
+    Set Test Variable     ${RESPONSE}
+    RETURN    ${RESPONSE}
 
 Make Post Request
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${ENDPOINT}=${EMPTY}    ${HEADER}=${EMPTY}    ${PAYLOAD}=${EMPTY}
-    ${response}=    Make Request    POST    ${BASE_URL}    ${ENDPOINT}    ${HEADER}    ${PAYLOAD}
-    RETURN    ${response}
+    ${RESPONSE}=    Make Request    POST    ${BASE_URL}    ${ENDPOINT}    ${HEADER}    ${PAYLOAD}
+    Set Test Variable     ${REQUEST}    ${PAYLOAD}
+    Set Test Variable     ${RESPONSE}
+    RETURN    ${RESPONSE}
 
 Make Put Request
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${ENDPOINT}=${EMPTY}    ${HEADER}=${EMPTY}    ${PAYLOAD}=${EMPTY}
-    ${response}=    Make Request    PUT    ${BASE_URL}    ${ENDPOINT}    ${HEADER}    ${PAYLOAD}
+    ${RESPONSE}=    Make Request    PUT    ${BASE_URL}    ${ENDPOINT}    ${HEADER}    ${PAYLOAD}
+    Set Test Variable     ${REQUEST}    ${PAYLOAD}
+    Set Test Variable     ${RESPONSE}
     RETURN    ${response}
 
 Make Patch Request
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${ENDPOINT}=${EMPTY}    ${PARAMETER}=${EMPTY}    ${HEADER}=${EMPTY}    ${PAYLOAD}=${EMPTY}
-    ${response}=    Make Request    PATCH    ${BASE_URL}    ${ENDPOINT}    ${HEADER}    ${PAYLOAD}    ${PARAMETER}
-    RETURN    ${response}
+    ${RESPONSE}=    Make Request    PATCH    ${BASE_URL}    ${ENDPOINT}    ${HEADER}    ${PAYLOAD}    ${PARAMETER}
+    Set Test Variable     ${REQUEST}    ${PAYLOAD}
+    Set Test Variable     ${RESPONSE}
+    RETURN    ${RESPONSE}
 
 Make Delete Request
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${ENDPOINT}=${EMPTY}    ${PARAMETER}=${EMPTY}    ${HEADER}=${EMPTY}
-    ${response}=    Make Request    DELETE    ${BASE_URL}    ${ENDPOINT}    ${HEADER}    ${EMPTY}    ${PARAMETER}
-    RETURN    ${response}
+    ${RESPONSE}=    Make Request    DELETE    ${BASE_URL}    ${ENDPOINT}    ${HEADER}    ${EMPTY}    ${PARAMETER}
+    Set Test Variable     ${RESPONSE}
+    RETURN    ${RESPONSE}
 
 Make_Get_Request_TestPlan
     [Arguments]    ${HEADER}=${HEADER}    ${ENDPOINT}=${ENDPOINT}
