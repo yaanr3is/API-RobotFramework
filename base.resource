@@ -8,6 +8,7 @@ Library           DateTime
 Library           BuiltIn
 Variables         disable_warnings.py
 Library           yaml
+Library           String
 
 ### Custom Libraries
 Library           env/load.py
@@ -41,10 +42,11 @@ Resource          resources/utils/http.robot
 
 *** Variables ***
 
-${BASE_URL}             %{BASE_URL=${EMPTY}}
+${BASE_URL}                  %{BASE_URL=${EMPTY}}
 ${API_ENVIRONMENT}           %{API_ENVIRONMENT=${EMPTY}}
 ${YAML_FILE}                 env/${API_ENVIRONMENT}.yaml
 ${TESTPLAN}                  %{TESTPLAN=${EMPTY}}
+${SUITE_TEST}                %{SUITE_TEST=${EMPTY}}
 
 
 
