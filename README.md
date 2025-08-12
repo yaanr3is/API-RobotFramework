@@ -61,3 +61,11 @@ Altere o caminho (tests/) conforme a estrutura do seu projeto.
 Para sair do ambiente virtual:
 
     exit
+    
+Env:
+```bash
+API_ENVIRONMENT=HML
+FAT=
+TESTPLAN=
+SUITE_TEST=
+```
